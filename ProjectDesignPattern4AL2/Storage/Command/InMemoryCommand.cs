@@ -2,7 +2,7 @@ namespace ProjectDesignPattern4AL2.Storage.Command;
 
 public class InMemoryCommand : ICommands
 {
-    private readonly List<Classes.Command> _commandes;
+    private static readonly List<Classes.Command> _commandes;
 
     public void Add(Classes.Command Command)
     {
