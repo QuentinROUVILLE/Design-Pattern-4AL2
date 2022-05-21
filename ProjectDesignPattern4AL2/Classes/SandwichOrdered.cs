@@ -4,7 +4,7 @@ public class SandwichOrdered
 {
     public int Id { get; set; }
     public string Name { get; set; }
-    public Dictionary<Ingredient, int> Ingredients { get; set; }
+    public Dictionary<Ingredient, double> Ingredients { get; set; }
     public double Price { get; set; }
 
     public SandwichOrdered(int id, Sandwich sandwich)
