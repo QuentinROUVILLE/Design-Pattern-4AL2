@@ -12,4 +12,9 @@ public class Sandwich
         Ingredients = ingredients;
         Price = price;
     }
+
+    public override string ToString()
+    {
+        return $"{Name} - {Price}€";
+    }
 }

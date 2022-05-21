@@ -1,3 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using ProjectDesignPattern4AL2.Controllers;
+using ProjectDesignPattern4AL2.Fixtures;
+using ProjectDesignPattern4AL2.Storage.Sandwich;
 
-Console.WriteLine("Hello, World!");
+SandwichFixture.Populate(new InMemorySandwich());
+CliController.StartCli();

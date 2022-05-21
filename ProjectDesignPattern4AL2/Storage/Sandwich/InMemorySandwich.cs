@@ -2,7 +2,7 @@ namespace ProjectDesignPattern4AL2.Storage.Sandwich;
 
 public class InMemorySandwich : ISandwiches
 {
-    private static readonly List<Classes.Sandwich> _sandwiches;
+    private static readonly List<Classes.Sandwich> _sandwiches = new List<Classes.Sandwich>();
 
     public void Add(Classes.Sandwich sandwich)
     {

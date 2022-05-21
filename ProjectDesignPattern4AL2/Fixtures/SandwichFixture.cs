@@ -23,7 +23,7 @@ public class SandwichFixture
             [jambon] = 1,
             [beurre] = 10
         };
-        sandwiches.Add(new Sandwich("Jambon Beurre", ingredients, 3.50));
+        sandwiches.Add(new Sandwich("Jambon beurre", ingredients, 3.50));
 
         ingredients = new Dictionary<Ingredient, double>
         {

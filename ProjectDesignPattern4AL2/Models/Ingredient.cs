@@ -10,4 +10,9 @@ public class Ingredient
         Name = name;
         Unit = unit;
     }
+    
+    public override string ToString()
+    {
+        return $"{Name} {Unit}";
+    }
 }
