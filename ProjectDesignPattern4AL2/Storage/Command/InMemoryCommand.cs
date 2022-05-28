@@ -4,11 +4,11 @@ namespace ProjectDesignPattern4AL2.Storage.Command;
 
 public class InMemoryCommand : ICommands
 {
-    private static readonly List<Classes.Command> _commandes;
+    private static readonly List<Classes.Command> _commandes = new List<Classes.Command>();
 
-    public void Add(Classes.Command Command)
+    public void Add(Classes.Command command)
     {
-        _commandes.Add(Command);
+        _commandes.Add(command);
     }
 
     public void Add(Dictionary<SandwichOrdered, int> sandwichesOrdered)
