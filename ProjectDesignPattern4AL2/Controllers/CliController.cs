@@ -7,7 +7,7 @@ public class CliController
 {
     public static void StartCli()
     {
-        Console.WriteLine("Bienvenue dans la boulagenrie du futur");
+        Console.WriteLine("Bienvenue dans la boulangerie du futur");
         do {
             try
             {
