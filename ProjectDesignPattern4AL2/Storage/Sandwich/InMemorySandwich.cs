@@ -28,15 +28,15 @@ public class InMemorySandwich : ISandwiches
         return Sandwiches.FirstOrDefault(s => s.Key.Name == name).Value;
     }
 
-    public void BuySandwiches(Dictionary<SandwichOrdered, int> sandwiches)
+    public void BuySandwiches(Dictionary<SandwichOrdered, List<String>> sandwiches)
     {
         foreach (var sandwich in sandwiches)
         {
-            if(GetStock(sandwich.Key.Name) < sandwich.Value)
+            if(GetStock(sandwich.Key.Name) < sandwich.Value.Count)
             {
                 throw new Exception("Il n'y a pas assez de " + sandwich.Key.Name + " en stock (en stock : " + GetStock(sandwich.Key.Name) + ")");
             }
-            Sandwiches[GetSandwich(sandwich.Key.Name)!] -= sandwich.Value;
+            Sandwiches[GetSandwich(sandwich.Key.Name)!] -= sandwich.Value.Count;
         }
     }
 }

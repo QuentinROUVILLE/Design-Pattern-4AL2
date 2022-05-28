@@ -14,7 +14,7 @@ public class SandwichFixture
         Ingredient tomate = new Ingredient("Tomate", "unité");
         Ingredient mayo = new Ingredient("Mayonnaise", "gramme");
         Ingredient salade = new Ingredient("Salade", "gramme");
-        Ingredient poulet = new Ingredient("Tranche de poulet", "tranche");
+        Ingredient poulet = new Ingredient("Poulet", "tranche");
         Ingredient thon = new Ingredient("Thon", "gramme");
 
         var ingredients = new Dictionary<Ingredient, double>
@@ -23,7 +23,7 @@ public class SandwichFixture
             [jambon] = 1,
             [beurre] = 10
         };
-        sandwiches.Add(new Sandwich("Jambon beurre", ingredients, 3.50), 2);
+        sandwiches.Add(new Sandwich("Jambon-beurre", ingredients, 3.50), 200);
 
         ingredients = new Dictionary<Ingredient, double>
         {
@@ -34,7 +34,7 @@ public class SandwichFixture
             [mayo] = 10,
             [salade] = 10
         };
-        sandwiches.Add(new Sandwich("Poulet Crudités", ingredients, 5), 2);
+        sandwiches.Add(new Sandwich("Poulet-Crudités", ingredients, 5), 200);
 
         ingredients = new Dictionary<Ingredient, double>
         {
@@ -44,6 +44,6 @@ public class SandwichFixture
             [mayo] = 10,
             [salade] = 10
         };
-        sandwiches.Add(new Sandwich("Dieppois", ingredients, 4.50), 2);
+        sandwiches.Add(new Sandwich("Dieppois", ingredients, 4.50), 200);
     }
 }

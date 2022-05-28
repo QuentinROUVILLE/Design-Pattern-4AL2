@@ -12,9 +12,16 @@ public class SandwichOrdered
         Ingredients = sandwich.Ingredients;
         Price = sandwich.Price;
     }
-
-    public override string ToString()
+    
+    public override bool Equals(object obj)
     {
-        return $"{Name}";
+        SandwichOrdered other = obj as SandwichOrdered;
+        return other != null && other.Name == this.Name;
+    }
+
+    public override int GetHashCode()
+    {
+        if (Name == null) return 0;
+        return Name.GetHashCode();
     }
 }

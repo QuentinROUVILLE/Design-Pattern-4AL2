@@ -11,7 +11,7 @@ public class InMemoryCommand : ICommands
         _commandes.Add(command);
     }
 
-    public void Add(Dictionary<SandwichOrdered, int> sandwichesOrdered)
+    public void Add(Dictionary<SandwichOrdered, List<String>> sandwichesOrdered)
     {
         _commandes.Add(new Models.Command(sandwichesOrdered));
     }

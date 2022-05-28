@@ -10,5 +10,5 @@ public interface ISandwiches
 
     public int? GetStock(string name);
     
-    void BuySandwiches(Dictionary<SandwichOrdered, int> sandwiches);
+    void BuySandwiches(Dictionary<SandwichOrdered, List<String>> sandwiches);
 }

@@ -13,23 +13,23 @@ public class CliController
             {
                 Console.WriteLine("------------------------------------------------------");
                 Console.WriteLine("Veuillez saisir votre commande :");
-                Dictionary<SandwichOrdered, int> sandwiches = InputParser.ParseStringToSandwiches(Console.ReadLine());
+                Dictionary<SandwichOrdered, List<String>> sandwiches = InputParser.ParseStringToSandwiches(Console.ReadLine());
                 
                 PrintBill(sandwiches);
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e);
             }
         } while (0 != 1);
     }
     
-    private static void PrintBill(Dictionary<SandwichOrdered, int> sandwiches)
+    private static void PrintBill(Dictionary<SandwichOrdered, List<String>> sandwiches)
     {
         double totalPrice = 0;
         foreach (var sandwich in sandwiches)
         {
-            Console.WriteLine(sandwich.Key.Name + " : " + sandwich.Value + " x " + sandwich.Key.Price + "€");
+            Console.WriteLine(String.Join(" + ", sandwich.Value) + " " + sandwich.Key.Name + " : " + sandwich.Value.Count + " x " + sandwich.Key.Price + "€");
             foreach (var ingredient in sandwich.Key.Ingredients)
             {
                 if (ingredient.Key.Unit == "unité")
@@ -41,7 +41,7 @@ public class CliController
                     Console.WriteLine("\t" + ingredient.Value + " " + ingredient.Key.Unit + " de " + ingredient.Key.Name);
                 }
             }
-            totalPrice += sandwich.Key.Price * sandwich.Value;
+            totalPrice += sandwich.Key.Price * sandwich.Value.Count;
         }
         Console.WriteLine("Prix total : " + totalPrice + "€");
     }
