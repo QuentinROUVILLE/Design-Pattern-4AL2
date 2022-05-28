@@ -30,7 +30,7 @@ public class CliController
         double totalPrice = 0;
         foreach (var sandwich in sandwiches)
         {
-            Console.WriteLine(string.Join(" + ", sandwich.Value) + " " + sandwich.Key.Name + " : " +
+            Console.WriteLine(string.Join(" + ", sandwich.Value) + " | " + sandwich.Key.Name + " : " +
                               sandwich.Value.Count + " x " + sandwich.Key.Price + "€");
             foreach (var ingredient in sandwich.Key.Ingredients)
                 if (ingredient.Key.Unit == "unité")
