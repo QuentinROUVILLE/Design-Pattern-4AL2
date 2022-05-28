@@ -20,7 +20,7 @@ public class CliController
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine(e.Message);
             }
         } while (0 != 1);
     }
