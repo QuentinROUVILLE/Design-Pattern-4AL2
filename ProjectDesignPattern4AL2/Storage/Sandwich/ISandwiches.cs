@@ -1,12 +1,14 @@
+using ProjectDesignPattern4AL2.Models;
+
 namespace ProjectDesignPattern4AL2.Storage.Sandwich;
 
 public interface ISandwiches
 {
-    void Add(Classes.Sandwich command, int quantity);
+    void Add(Models.Sandwich command, int quantity);
     
-    Classes.Sandwich? GetSandwich(string name);
+    Models.Sandwich? GetSandwich(string name);
 
     public int? GetStock(string name);
     
-    void BuySandwiches(Dictionary<Classes.SandwichOrdered, int> sandwiches);
+    void BuySandwiches(Dictionary<SandwichOrdered, int> sandwiches);
 }

@@ -2,7 +2,7 @@ namespace ProjectDesignPattern4AL2.Storage.Command;
 
 public interface ICommands
 {
-    void Add(Classes.Command command);
+    void Add(Models.Command command);
     
-    Classes.Command? Get(DateTime dateOfCreation);
+    Models.Command? Get(DateTime dateOfCreation);
 }

@@ -1,4 +1,4 @@
-namespace ProjectDesignPattern4AL2.Classes;
+namespace ProjectDesignPattern4AL2.Models;
 
 public class Ingredient
 {

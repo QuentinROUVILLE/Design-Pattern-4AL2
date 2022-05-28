@@ -1,10 +1,12 @@
+using ProjectDesignPattern4AL2.Models;
+
 namespace ProjectDesignPattern4AL2.Storage.Sandwich;
 
 public class InMemorySandwich : ISandwiches
 {
-    private static readonly Dictionary<Classes.Sandwich, int> Sandwiches = new Dictionary<Classes.Sandwich, int>();
+    private static readonly Dictionary<Models.Sandwich, int> Sandwiches = new Dictionary<Models.Sandwich, int>();
 
-    public void Add(Classes.Sandwich sandwich, int quantity)
+    public void Add(Models.Sandwich sandwich, int quantity)
     {
         if(GetSandwich(sandwich.Name) == null)
         {
@@ -16,7 +18,7 @@ public class InMemorySandwich : ISandwiches
         }
     }
 
-    public Classes.Sandwich? GetSandwich(string name)
+    public Models.Sandwich? GetSandwich(string name)
     {
         return Sandwiches.FirstOrDefault(s => s.Key.Name == name).Key;
     }
@@ -26,7 +28,7 @@ public class InMemorySandwich : ISandwiches
         return Sandwiches.FirstOrDefault(s => s.Key.Name == name).Value;
     }
 
-    public void BuySandwiches(Dictionary<Classes.SandwichOrdered, int> sandwiches)
+    public void BuySandwiches(Dictionary<SandwichOrdered, int> sandwiches)
     {
         foreach (var sandwich in sandwiches)
         {

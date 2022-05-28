@@ -1,4 +1,4 @@
-namespace ProjectDesignPattern4AL2.Classes;
+namespace ProjectDesignPattern4AL2.Models;
 
 public class SandwichOrdered
 {
@@ -11,5 +11,10 @@ public class SandwichOrdered
         Name = sandwich.Name;
         Ingredients = sandwich.Ingredients;
         Price = sandwich.Price;
+    }
+
+    public override string ToString()
+    {
+        return $"{Name}";
     }
 }
