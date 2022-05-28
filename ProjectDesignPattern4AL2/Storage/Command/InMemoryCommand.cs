@@ -1,3 +1,5 @@
+using ProjectDesignPattern4AL2.Classes;
+
 namespace ProjectDesignPattern4AL2.Storage.Command;
 
 public class InMemoryCommand : ICommands
@@ -9,8 +11,13 @@ public class InMemoryCommand : ICommands
         _commandes.Add(Command);
     }
 
-    public Classes.Command? Get(int id)
+    public void Add(Dictionary<SandwichOrdered, int> sandwichesOrdered)
     {
-        return _commandes.FirstOrDefault(s => s.Id == id);
+        _commandes.Add(new Classes.Command(sandwichesOrdered));
+    }
+
+    public Classes.Command? Get(DateTime dateOfCreation)
+    {
+        return _commandes.FirstOrDefault(s => s.DateOfCreation == dateOfCreation);
     }
 }

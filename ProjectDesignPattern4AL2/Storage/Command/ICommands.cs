@@ -4,5 +4,5 @@ public interface ICommands
 {
     void Add(Classes.Command command);
     
-    Classes.Command? Get(int id);
+    Classes.Command? Get(DateTime dateOfCreation);
 }

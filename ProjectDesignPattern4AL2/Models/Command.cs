@@ -2,12 +2,12 @@ namespace ProjectDesignPattern4AL2.Classes;
 
 public class Command
 {
-    public int Id { get; set; }
-    public SandwichOrdered[] SandwichesOrdered{ get; set; }
+    public DateTime DateOfCreation { get; set; }
+    public Dictionary<SandwichOrdered, int> SandwichesOrdered{ get; set; }
 
-    public Command(int id, SandwichOrdered[] sandwichesOrdered)
+    public Command(Dictionary<SandwichOrdered, int> sandwichesOrdered)
     {
-        Id = id;
+        DateOfCreation = DateTime.Now;
         SandwichesOrdered = sandwichesOrdered;
     }
 }

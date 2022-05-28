@@ -13,7 +13,7 @@ public class CliController
             {
                 Console.WriteLine("------------------------------------------------------");
                 Console.WriteLine("Veuillez saisir votre commande :");
-                Dictionary<Sandwich, int> sandwiches = InputParser.ParseStringToSandwiches(Console.ReadLine());
+                Dictionary<SandwichOrdered, int> sandwiches = InputParser.ParseStringToSandwiches(Console.ReadLine());
                 
                 PrintBill(sandwiches);
             }
@@ -24,7 +24,7 @@ public class CliController
         } while (0 != 1);
     }
     
-    private static void PrintBill(Dictionary<Sandwich, int> sandwiches)
+    private static void PrintBill(Dictionary<SandwichOrdered, int> sandwiches)
     {
         double totalPrice = 0;
         foreach (var sandwich in sandwiches)

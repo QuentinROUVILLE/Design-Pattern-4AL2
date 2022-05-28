@@ -26,7 +26,7 @@ public class InMemorySandwich : ISandwiches
         return Sandwiches.FirstOrDefault(s => s.Key.Name == name).Value;
     }
 
-    public void BuySandwiches(Dictionary<Classes.Sandwich, int> sandwiches)
+    public void BuySandwiches(Dictionary<Classes.SandwichOrdered, int> sandwiches)
     {
         foreach (var sandwich in sandwiches)
         {
@@ -35,7 +35,7 @@ public class InMemorySandwich : ISandwiches
                 throw new Exception("Il n'y a pas assez de " + sandwich.Key.Name + " en stock (en stock : " + GetStock(sandwich.Key.Name) + ")");
             }
             {
-                Sandwiches[sandwich.Key] -= sandwich.Value;
+                Sandwiches[GetSandwich(sandwich.Key.Name)!] -= sandwich.Value;
             }
         }
     }

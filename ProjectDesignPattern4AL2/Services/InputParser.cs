@@ -1,4 +1,5 @@
 using ProjectDesignPattern4AL2.Classes;
+using ProjectDesignPattern4AL2.Storage.Command;
 using ProjectDesignPattern4AL2.Storage.Sandwich;
 
 namespace ProjectDesignPattern4AL2.Services;
@@ -6,17 +7,19 @@ namespace ProjectDesignPattern4AL2.Services;
 public class InputParser
 {
     private static readonly InMemorySandwich InMemorySandwich = new InMemorySandwich();
+    private static readonly InMemoryCommand InMemoryCommand = new InMemoryCommand();
     
-    public static Dictionary<Sandwich, int> ParseStringToSandwiches(string input)
+    public static Dictionary<SandwichOrdered, int> ParseStringToSandwiches(string input)
     {
         string[] inputArray = input.Split(", ");
-        Dictionary<Sandwich, int> sandwiches = new Dictionary<Sandwich, int>();
+        Dictionary<SandwichOrdered, int> sandwiches = new Dictionary<SandwichOrdered, int>();
         
         foreach (string sandwich in inputArray)
         {
-            Sandwich sandwichToAdd = InMemorySandwich.GetSandwich(sandwich) ?? 
-                                     throw new ArgumentException("Le sandwich " + sandwich + " n'existe pas");
-            
+            SandwichOrdered sandwichToAdd = new SandwichOrdered(
+                InMemorySandwich.GetSandwich(sandwich) ?? 
+                throw new ArgumentException("Le sandwich " + sandwich + " n'existe pas"));
+
             if(sandwiches.ContainsKey(sandwichToAdd))
             {
                 sandwiches[sandwichToAdd]++;
@@ -28,6 +31,7 @@ public class InputParser
         }
         
         InMemorySandwich.BuySandwiches(sandwiches);
+        InMemoryCommand.Add(sandwiches);
         
         return sandwiches;
     }

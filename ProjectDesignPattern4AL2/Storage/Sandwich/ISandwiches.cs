@@ -8,5 +8,5 @@ public interface ISandwiches
 
     public int? GetStock(string name);
     
-    void BuySandwiches(Dictionary<Classes.Sandwich, int> sandwiches);
+    void BuySandwiches(Dictionary<Classes.SandwichOrdered, int> sandwiches);
 }
