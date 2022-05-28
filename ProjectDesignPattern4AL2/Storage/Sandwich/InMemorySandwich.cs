@@ -36,9 +36,7 @@ public class InMemorySandwich : ISandwiches
             {
                 throw new Exception("Il n'y a pas assez de " + sandwich.Key.Name + " en stock (en stock : " + GetStock(sandwich.Key.Name) + ")");
             }
-            {
-                Sandwiches[GetSandwich(sandwich.Key.Name)!] -= sandwich.Value;
-            }
+            Sandwiches[GetSandwich(sandwich.Key.Name)!] -= sandwich.Value;
         }
     }
 }

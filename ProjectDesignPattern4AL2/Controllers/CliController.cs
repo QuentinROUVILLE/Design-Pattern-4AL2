@@ -29,7 +29,18 @@ public class CliController
         double totalPrice = 0;
         foreach (var sandwich in sandwiches)
         {
-            Console.WriteLine(sandwich.Key + " : " + sandwich.Value + " x " + sandwich.Key.Price + "€");
+            Console.WriteLine(sandwich.Key.Name + " : " + sandwich.Value + " x " + sandwich.Key.Price + "€");
+            foreach (var ingredient in sandwich.Key.Ingredients)
+            {
+                if (ingredient.Key.Unit == "unité")
+                {
+                    Console.WriteLine("\t" + ingredient.Value + " " + ingredient.Key.Name);
+                }
+                else
+                {
+                    Console.WriteLine("\t" + ingredient.Value + " " + ingredient.Key.Unit + " de " + ingredient.Key.Name);
+                }
+            }
             totalPrice += sandwich.Key.Price * sandwich.Value;
         }
         Console.WriteLine("Prix total : " + totalPrice + "€");
