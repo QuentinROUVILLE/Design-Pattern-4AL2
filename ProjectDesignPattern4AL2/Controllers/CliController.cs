@@ -8,13 +8,14 @@ public class CliController
     public static void StartCli()
     {
         Console.WriteLine("Bienvenue dans la boulangerie du futur");
-        do {
+        do
+        {
             try
             {
                 Console.WriteLine("------------------------------------------------------");
                 Console.WriteLine("Veuillez saisir votre commande :");
-                Dictionary<SandwichOrdered, List<String>> sandwiches = InputParser.ParseStringToSandwiches(Console.ReadLine());
-                
+                var sandwiches = InputParser.ParseStringToSandwiches(Console.ReadLine());
+
                 PrintBill(sandwiches);
             }
             catch (Exception e)
@@ -23,26 +24,23 @@ public class CliController
             }
         } while (0 != 1);
     }
-    
-    private static void PrintBill(Dictionary<SandwichOrdered, List<String>> sandwiches)
+
+    private static void PrintBill(Dictionary<SandwichOrdered, List<string>> sandwiches)
     {
         double totalPrice = 0;
         foreach (var sandwich in sandwiches)
         {
-            Console.WriteLine(String.Join(" + ", sandwich.Value) + " " + sandwich.Key.Name + " : " + sandwich.Value.Count + " x " + sandwich.Key.Price + "€");
+            Console.WriteLine(string.Join(" + ", sandwich.Value) + " " + sandwich.Key.Name + " : " +
+                              sandwich.Value.Count + " x " + sandwich.Key.Price + "€");
             foreach (var ingredient in sandwich.Key.Ingredients)
-            {
                 if (ingredient.Key.Unit == "unité")
-                {
                     Console.WriteLine("\t" + ingredient.Value + " " + ingredient.Key.Name);
-                }
                 else
-                {
-                    Console.WriteLine("\t" + ingredient.Value + " " + ingredient.Key.Unit + " de " + ingredient.Key.Name);
-                }
-            }
+                    Console.WriteLine(
+                        "\t" + ingredient.Value + " " + ingredient.Key.Unit + " de " + ingredient.Key.Name);
             totalPrice += sandwich.Key.Price * sandwich.Value.Count;
         }
+
         Console.WriteLine("Prix total : " + totalPrice + "€");
     }
 }

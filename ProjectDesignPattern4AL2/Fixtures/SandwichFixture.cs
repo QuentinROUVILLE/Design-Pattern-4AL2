@@ -7,15 +7,15 @@ public class SandwichFixture
 {
     public static void Populate(ISandwiches sandwiches)
     {
-        Ingredient pain = new Ingredient("Pain", "unité");
-        Ingredient jambon = new Ingredient("Jambon", "tranche");
-        Ingredient beurre = new Ingredient("Beurre", "gramme");
-        Ingredient oeuf = new Ingredient("Oeuf", "unité");
-        Ingredient tomate = new Ingredient("Tomate", "unité");
-        Ingredient mayo = new Ingredient("Mayonnaise", "gramme");
-        Ingredient salade = new Ingredient("Salade", "gramme");
-        Ingredient poulet = new Ingredient("Poulet", "tranche");
-        Ingredient thon = new Ingredient("Thon", "gramme");
+        var pain = new Ingredient("Pain", "unité");
+        var jambon = new Ingredient("Jambon", "tranche");
+        var beurre = new Ingredient("Beurre", "gramme");
+        var oeuf = new Ingredient("Oeuf", "unité");
+        var tomate = new Ingredient("Tomate", "unité");
+        var mayo = new Ingredient("Mayonnaise", "gramme");
+        var salade = new Ingredient("Salade", "gramme");
+        var poulet = new Ingredient("Poulet", "tranche");
+        var thon = new Ingredient("Thon", "gramme");
 
         var ingredients = new Dictionary<Ingredient, double>
         {

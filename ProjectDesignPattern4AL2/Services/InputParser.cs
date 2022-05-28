@@ -6,18 +6,18 @@ namespace ProjectDesignPattern4AL2.Services;
 
 public class InputParser
 {
-    private static readonly InMemorySandwich InMemorySandwich = new InMemorySandwich();
-    private static readonly InMemoryCommand InMemoryCommand = new InMemoryCommand();
-    
-    public static Dictionary<SandwichOrdered, List<String>> ParseStringToSandwiches(string userInput)
+    private static readonly InMemorySandwich InMemorySandwich = new();
+    private static readonly InMemoryCommand InMemoryCommand = new();
+
+    public static Dictionary<SandwichOrdered, List<string>> ParseStringToSandwiches(string userInput)
     {
-        string[] inputArray = userInput.Split(", ");
-        Dictionary<SandwichOrdered, List<String>> sandwiches = new Dictionary<SandwichOrdered, List<String>>();
-        
+        var inputArray = userInput.Split(", ");
+        var sandwiches = new Dictionary<SandwichOrdered, List<string>>();
+
         foreach (var input in inputArray)
         {
-            String buyer;
-            String sandwich;
+            string buyer;
+            string sandwich;
             try
             {
                 buyer = input.Split(" ")[0];
@@ -28,36 +28,19 @@ public class InputParser
                 throw new ArgumentException("Votre commande n'a pas le bon format, veuillez recommencer");
             }
 
-            SandwichOrdered sandwichToAdd = new SandwichOrdered(
-                InMemorySandwich.GetSandwich(sandwich) ?? 
+            var sandwichToAdd = new SandwichOrdered(
+                InMemorySandwich.GetSandwich(sandwich) ??
                 throw new ArgumentException("Le sandwich " + sandwich + " n'existe pas"));
 
-            if(sandwiches.ContainsKey(sandwichToAdd))
-            {
+            if (sandwiches.ContainsKey(sandwichToAdd))
                 sandwiches[sandwichToAdd].Add(buyer);
-            }
             else
-            {
-                sandwiches.Add(sandwichToAdd, new List<String>{buyer});
-            }
-        }
-        
-        InMemorySandwich.BuySandwiches(sandwiches);
-        InMemoryCommand.Add(sandwiches);
-        
-        return sandwiches;
-    }
-    
-    private static bool ContainsKey(Dictionary<SandwichOrdered, List<String>> sandwiches, SandwichOrdered sandwich)
-    {
-        foreach (var sandwichKey in sandwiches.Keys)
-        {
-            if(sandwichKey.Name == sandwich.Name)
-            {
-                return true;
-            }
+                sandwiches.Add(sandwichToAdd, new List<string> {buyer});
         }
 
-        return false;
+        InMemorySandwich.BuySandwiches(sandwiches);
+        InMemoryCommand.Add(sandwiches);
+
+        return sandwiches;
     }
 }
