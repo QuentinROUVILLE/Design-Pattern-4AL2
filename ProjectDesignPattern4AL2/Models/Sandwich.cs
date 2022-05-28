@@ -15,6 +15,6 @@ public class Sandwich
 
     public override string ToString()
     {
-        return $"{Name} - {Price}€";
+        return $"{Name}";
     }
 }

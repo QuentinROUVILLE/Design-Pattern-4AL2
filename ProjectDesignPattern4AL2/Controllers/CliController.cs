@@ -11,9 +11,11 @@ public class CliController
         do {
             try
             {
+                Console.WriteLine("------------------------------------------------------");
                 Console.WriteLine("Veuillez saisir votre commande :");
-                List<Sandwich> sandwiches = InputParser.ParseStringToSandwiches(Console.ReadLine());
-                PrintSandwiches(sandwiches);
+                Dictionary<Sandwich, int> sandwiches = InputParser.ParseStringToSandwiches(Console.ReadLine());
+                
+                PrintBill(sandwiches);
             }
             catch (Exception e)
             {
@@ -22,11 +24,14 @@ public class CliController
         } while (0 != 1);
     }
     
-    private static void PrintSandwiches(List<Sandwich> sandwiches)
+    private static void PrintBill(Dictionary<Sandwich, int> sandwiches)
     {
+        double totalPrice = 0;
         foreach (var sandwich in sandwiches)
         {
-            Console.WriteLine(sandwich.ToString());
+            Console.WriteLine(sandwich.Key + " : " + sandwich.Value + " x " + sandwich.Key.Price + "€");
+            totalPrice += sandwich.Key.Price * sandwich.Value;
         }
+        Console.WriteLine("Prix total : " + totalPrice + "€");
     }
 }

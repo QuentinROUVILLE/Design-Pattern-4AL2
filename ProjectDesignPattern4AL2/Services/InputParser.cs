@@ -5,17 +5,30 @@ namespace ProjectDesignPattern4AL2.Services;
 
 public class InputParser
 {
-    private static InMemorySandwich _inMemorySandwich = new InMemorySandwich();
+    private static readonly InMemorySandwich InMemorySandwich = new InMemorySandwich();
     
-    public static List<Sandwich> ParseStringToSandwiches(string input)
+    public static Dictionary<Sandwich, int> ParseStringToSandwiches(string input)
     {
-        string[] inputArray = input.Split(',');
-        List<Sandwich> sandwiches = new List<Sandwich>();
+        string[] inputArray = input.Split(", ");
+        Dictionary<Sandwich, int> sandwiches = new Dictionary<Sandwich, int>();
         
-        for (int i = 0; i < inputArray.Length; i++)
+        foreach (string sandwich in inputArray)
         {
-            sandwiches.Add(_inMemorySandwich.Get(inputArray[i]) ?? throw new ArgumentException("Le sandwich " + inputArray[i] + " n'existe pas"));
+            Sandwich sandwichToAdd = InMemorySandwich.GetSandwich(sandwich) ?? 
+                                     throw new ArgumentException("Le sandwich " + sandwich + " n'existe pas");
+            
+            if(sandwiches.ContainsKey(sandwichToAdd))
+            {
+                sandwiches[sandwichToAdd]++;
+            }
+            else
+            {
+                sandwiches.Add(sandwichToAdd, 1);
+            }
         }
+        
+        InMemorySandwich.BuySandwiches(sandwiches);
+        
         return sandwiches;
     }
 }
