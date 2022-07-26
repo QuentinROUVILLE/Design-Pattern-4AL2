@@ -15,32 +15,13 @@ public class CliController
                 Console.WriteLine("------------------------------------------------------");
                 Console.WriteLine("Veuillez saisir votre commande :");
                 var sandwiches = InputParser.ParseStringToSandwiches(Console.ReadLine());
-
-                PrintBill(sandwiches);
+                Bill bill = new Bill(sandwiches);
+                BillPrinter.PrintBill(bill);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
         } while (0 != 1);
-    }
-
-    private static void PrintBill(Dictionary<SandwichOrdered, List<string>> sandwiches)
-    {
-        double totalPrice = 0;
-        foreach (var sandwich in sandwiches)
-        {
-            Console.WriteLine(string.Join(" + ", sandwich.Value) + " | " + sandwich.Key.Name + " : " +
-                              sandwich.Value.Count + " x " + sandwich.Key.Price + "€");
-            foreach (var ingredient in sandwich.Key.Ingredients)
-                if (ingredient.Key.Unit == "unité")
-                    Console.WriteLine("\t" + ingredient.Value + " " + ingredient.Key.Name);
-                else
-                    Console.WriteLine(
-                        "\t" + ingredient.Value + " " + ingredient.Key.Unit + " de " + ingredient.Key.Name);
-            totalPrice += sandwich.Key.Price * sandwich.Value.Count;
-        }
-
-        Console.WriteLine("Prix total : " + totalPrice + "€");
     }
 }
