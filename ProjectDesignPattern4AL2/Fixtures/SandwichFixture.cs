@@ -1,3 +1,4 @@
+using ProjectDesignPattern4AL2.Builder;
 using ProjectDesignPattern4AL2.Models;
 using ProjectDesignPattern4AL2.Storage.Sandwich;
 
@@ -5,6 +6,16 @@ namespace ProjectDesignPattern4AL2.Fixtures;
 
 public class SandwichFixture
 {
+
+    private SandwichBuilder _sandwichBuilder ;
+    public Dictionary<String, Sandwich> dictionarySandwich ; 
+
+    public SandwichFixture()
+    {
+        this._sandwichBuilder = new SandwichBuilder();
+        this.dictionarySandwich = new Dictionary<string, Sandwich>();
+    }
+
     public static void Populate(ISandwiches sandwiches)
     {
         var pain = new Ingredient("Pain", "unité");
@@ -46,4 +57,17 @@ public class SandwichFixture
         };
         sandwiches.Add(new Sandwich("Dieppois", ingredients, 4.50), 2);
     }
+
+    public void initSandwichs()
+    {
+        this.dictionarySandwich.Add("Jambon-Beurre",this._sandwichBuilder.buildJambonBeurre().BuildSandwich());
+        this.dictionarySandwich.Add("Dieppois",this._sandwichBuilder.buildDieppois().BuildSandwich());
+        this.dictionarySandwich.Add("Poulet-Crudite",this._sandwichBuilder.buildPouletCrudite().BuildSandwich());
+    }
+
+    public Sandwich getSandwichByName(String sandwichName)
+    {
+        return dictionarySandwich[sandwichName];
+    }
+    
 }

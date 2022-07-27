@@ -1,3 +1,4 @@
+using ProjectDesignPattern4AL2.Fixtures;
 using ProjectDesignPattern4AL2.Models;
 using ProjectDesignPattern4AL2.Storage.Command;
 using ProjectDesignPattern4AL2.Storage.Sandwich;
@@ -13,7 +14,9 @@ public class InputParser
     {
         var inputArray = userInput.Split(", ");
         var sandwiches = new Dictionary<SandwichOrdered, List<string>>();
-
+        SandwichFixture sandwichFixture = new SandwichFixture();
+        sandwichFixture.initSandwichs();
+        
         foreach (var input in inputArray)
         {
             string buyer;
@@ -29,7 +32,7 @@ public class InputParser
             }
 
             var sandwichToAdd = new SandwichOrdered(
-                InMemorySandwich.GetSandwich(sandwich) ??
+                 sandwichFixture.getSandwichByName(sandwich)??
                 throw new ArgumentException("Le sandwich " + sandwich + " n'existe pas"));
 
             if (sandwiches.ContainsKey(sandwichToAdd))

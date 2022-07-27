@@ -9,7 +9,18 @@ public class Sandwich
         Price = price;
     }
 
+    public Sandwich()
+    {
+        
+    }
+
     public string Name { get; set; }
     public Dictionary<Ingredient, double> Ingredients { get; set; }
     public double Price { get; set; }
+
+
+    public void Add(Ingredient ingredient, double quantity)
+    {
+        this.Ingredients.Add(ingredient,quantity);
+    }
 }
