@@ -1,5 +1,4 @@
 using ProjectDesignPattern4AL2.Builder;
-using ProjectDesignPattern4AL2.Models;
 using ProjectDesignPattern4AL2.Storage.Sandwich;
 
 namespace ProjectDesignPattern4AL2.Fixtures;
