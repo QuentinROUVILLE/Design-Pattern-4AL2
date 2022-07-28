@@ -12,7 +12,7 @@ public class Bill
     public double calculateBill()
     {
         double totalPrice = 0;
-        foreach (var sandwich in Sandwiches)
+        foreach (KeyValuePair<SandwichOrdered, List<string>> sandwich in Sandwiches)
         {
             totalPrice += sandwich.Key.Price * sandwich.Value.Count;
         }

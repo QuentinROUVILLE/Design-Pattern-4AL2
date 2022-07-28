@@ -5,11 +5,11 @@ public class BillPrinter
 {
     public static void PrintBill(Bill bill)
     {
-        foreach (var sandwich in bill.Sandwiches)
+        foreach (KeyValuePair<SandwichOrdered, List<string>> sandwich in bill.Sandwiches)
         {
             Console.WriteLine(string.Join(" + ", sandwich.Value) + " | " + sandwich.Key.Name + " : " +
                               sandwich.Value.Count + " x " + sandwich.Key.Price + "€");
-            foreach (var ingredient in sandwich.Key.Ingredients)
+            foreach (KeyValuePair<Ingredient, Double> ingredient in sandwich.Key.Ingredients)
                 if (ingredient.Key.Unit == "unité")
                     Console.WriteLine("\t" + ingredient.Value + " " + ingredient.Key.Name);
                 else

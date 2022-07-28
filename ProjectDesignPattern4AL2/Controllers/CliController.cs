@@ -14,7 +14,7 @@ public class CliController
             {
                 Console.WriteLine("------------------------------------------------------");
                 Console.WriteLine("Veuillez saisir votre commande :");
-                var sandwiches = InputParser.ParseStringToSandwiches(Console.ReadLine());
+                Dictionary<SandwichOrdered, List<string>> sandwiches = InputParser.ParseStringToSandwiches(Console.ReadLine());
                 Bill bill = new Bill(sandwiches);
                 BillPrinter.PrintBill(bill);
             }

@@ -11,10 +11,10 @@ public class InputParser
 
     public static Dictionary<SandwichOrdered, List<string>> ParseStringToSandwiches(string userInput)
     {
-        var inputArray = userInput.Split(", ");
+        String[] inputArray = userInput.Split(", ");
         var sandwiches = new Dictionary<SandwichOrdered, List<string>>();
 
-        foreach (var input in inputArray)
+        foreach (String input in inputArray)
         {
             string buyer;
             string sandwich;
